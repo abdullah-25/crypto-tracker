@@ -1,0 +1,89 @@
+@use "/src/styles/partials.scss" as *;
+@use "/src/styles/colors.scss" as *;
+
+.component-container{
+    box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.1);
+    border-radius: 2px;
+}
+.warehouseform{
+    display:flex;
+    flex-direction: column;
+    row-gap: 1rem;
+    padding: $mobile-indent;
+    @include tablet{
+        flex-direction: row;
+        align-items: baseline;
+        padding: 2rem $tablet-indent 1rem $tablet-indent;
+    }
+    &__addnew{
+        background-color: $button-background;
+        color: $text-button;
+        outline:none;
+        border:none;
+        border-radius: 20px;
+        padding:.375rem;
+        &:hover{
+            background-color: $button-hover;
+        }
+    }&__search{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding-left: 0.5rem;
+        border: 1px solid $outline;
+        border-radius: 40px;
+        padding:0.75rem;
+        @include tablet{
+            margin-left: auto;
+            margin-right: 2rem;
+        }
+    }
+    &__input {
+        background-color: rgba(#FFFFFF,0);
+        border: none;
+        padding-left: 1rem;
+        
+    }
+    &__icon{
+        padding:none;
+    }
+}
+.warehouselist{
+    list-style-type: none;
+    padding:0;
+    &__labels{
+        display:none;
+        @include tablet{
+            list-style-type: none;
+            display:flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 $tablet-indent;
+            background-color: $table-header-background;
+            color: $text-table-header;
+        }
+        .list-label{
+            display:flex;
+            flex-direction: row;
+            align-items: center;
+            padding: 1rem 0;
+            width:25%;
+            &--end{
+                width:20%;
+                text-align:right;
+            }
+        }
+    }
+}
+.icon{
+    width:24px;
+}
+.sort-up{
+    background-color: $table-header-background;
+    border:none;
+    outline:none;
+    width:24px;
+    height:24px;
+    background-image: url("../../assets/icons/sort-24px.svg");
+}
