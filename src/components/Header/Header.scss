@@ -1,0 +1,49 @@
+@use "../../styles/colors" as *;
+@use "../../styles/partials" as *;
+
+.header {
+  background-color: $header-background;
+  height: 11rem;
+  padding: 1rem $mobile-indent;
+  @include tablet {
+    padding: 1rem $tablet-indent;
+  }
+  @include desktop {
+    padding: 1rem $desktop-indent;
+  }
+  &__content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    row-gap: 1rem;
+    @include tablet {
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      align-items: center;
+      height: 4rem;
+    }
+  }
+  &__title {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    @include tablet {
+      width: auto;
+      margin-right: auto;
+    }
+  }
+  &__button {
+    width: 50%;
+    padding: 0.5rem 0;
+    border-radius: 1.5rem;
+    text-align: center;
+    color: $text-button;
+    text-decoration: none;
+    @include tablet {
+      width: 6.6875rem;
+    }
+  }
+}
+.active {
+  background-color: black;
+}

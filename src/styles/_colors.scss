@@ -1,0 +1,158 @@
+$tablet-breakpoint: 768px;
+$desktop-breakpoint: 1280px;
+
+@mixin tablet {
+  @media (min-width: $tablet-breakpoint) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: $desktop-breakpoint) {
+    @content;
+  }
+}
+
+@font-face {
+  font-family: TitilliumWeb;
+  src: url("../assets/fonts/TitilliumWeb-Regular.ttf") format("truetype");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: TitilliumWeb;
+  src: url("../assets/fonts/TitilliumWeb-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+}
+
+//Margins for these pages are consistent, so they're defined here as variables.
+$mobile-indent: 1rem;
+$tablet-indent: 2.25rem;
+
+//This needs to change based on the width of the window.
+//We get the width with 100vw, find how much larger the window is than our desktop breakpoint,
+//then divide it by 2 so that the indent can be applied to both sides.
+$base-desktop-indent: 7.5rem;
+$desktop-indent: calc(
+  $base-desktop-indent + ((1vw * 100) - $desktop-breakpoint) / 2
+);
+
+a {
+  text-decoration: none;
+}
+
+//Here we can just set the headers and P tags to style set out in the style guide, then the pages can handle spacing.
+//Page Header
+h1 {
+  padding: 0;
+  margin: 0;
+  font-size: 1.75rem;
+  line-height: 2.25rem;
+  font-family: TitilliumWeb;
+  font-weight: 600;
+
+  @include tablet {
+    font-size: 2rem;
+    line-height: 2.5rem;
+    font-family: TitilliumWeb;
+    font-weight: 600;
+  }
+}
+
+//Subheader
+h2 {
+  padding: 0;
+  margin: 0;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-family: TitilliumWeb;
+  font-weight: 600;
+  @include tablet {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    font-family: TitilliumWeb;
+    font-weight: 600;
+  }
+}
+.table-header {
+  font-size: 0.6875rem;
+  line-height: 1rem;
+  font-family: TitilliumWeb;
+  font-weight: 600;
+  color: #333;
+  @include tablet {
+    font-size: 0.75rem;
+    line-height: 1.125rem;
+    font-family: TitilliumWeb;
+    font-weight: 600;
+  }
+}
+//Body Copy
+.body-large {
+  padding: 0;
+  margin: 0;
+  font-size: 0.9375rem;
+  line-height: 1.625rem;
+  font-family: TitilliumWeb;
+  font-weight: 400;
+
+  @include tablet {
+    font-size: 1rem;
+    line-height: 1.75rem;
+    font-family: TitilliumWeb;
+    font-weight: 400;
+  }
+}
+.body-medium {
+  padding: 0;
+  margin: 0;
+  font-size: 0.8125rem;
+  line-height: 1.25rem;
+  font-family: TitilliumWeb;
+  font-weight: 400;
+
+  @include tablet {
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+    font-family: TitilliumWeb;
+    font-weight: 400;
+  }
+}
+.body-small {
+  padding: 0;
+  margin: 0;
+  font-size: 0.6875rem;
+  line-height: 1rem;
+  font-family: TitilliumWeb;
+  font-weight: 400;
+
+  @include tablet {
+    font-size: 0.75rem;
+    line-height: 1.125rem;
+    font-family: TitilliumWeb;
+    font-weight: 400;
+  }
+}
+.label-text {
+  padding: 0;
+  margin: 0;
+  font-size: 0.8125rem;
+  line-height: 1.25rem;
+  font-family: TitilliumWeb;
+  font-weight: 600;
+  @include tablet {
+    font-size: 0.875rem;
+
+    line-height: 1.375rem;
+
+    font-family: TitilliumWeb;
+    font-weight: 600;
+  }
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: "";
+}

@@ -1,0 +1,35 @@
+@use "../../styles//partials" as *;
+.Footer__text {
+  width: 10rem;
+
+  //styleName: M P3;
+  font-family: "Titillium Web";
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0em;
+  text-align: center;
+
+  color: #5c667e;
+  @mixin tablet {
+    font-size: 1rem;
+    line-height: 1rem;
+    width: auto;
+    margin-bottom: 4rem;
+  }
+  @mixin desktop {
+    font-size: 1.5rem;
+  }
+}
+.Footer-div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  bottom: 0px;
+  background-color: #f7f8f9;
+  flex: 1;
+  @mixin tablet {
+    height: 16rem;
+    align-items: end;
+  }
+}
