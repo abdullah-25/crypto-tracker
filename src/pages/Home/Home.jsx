@@ -2,6 +2,8 @@ import "../PagePositioning.scss";
 import CryptoList from "../../components/CryptoList/CryptoList";
 import { useEffect, useState } from "react";
 
+import CircularIndeterminate from "../../components/CircularProgressBar/CircularProgressBar";
+
 export default function Home() {
   const [CryptoCoinsArray, setCryptoCoinsArray] = useState(undefined);
 
@@ -30,7 +32,7 @@ export default function Home() {
   }, []);
 
   if (!CryptoCoinsArray) {
-    return <>Loading...</>;
+    return <CircularIndeterminate />;
   }
   return (
     <div className="positioning">

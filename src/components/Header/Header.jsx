@@ -12,8 +12,8 @@ function Header() {
           </Link> */}
         </div>
 
-        {/* <NavLink to="/warehouse" className="header__button">
-          <p className="body-large">Warehouses</p>
+        {/* <NavLink to="/crypto" className="header__button">
+          <p className="body-large">cryptos</p>
         </NavLink>
         <NavLink to="/inventory" className="header__button">
           <p className="body-large">Inventory</p>

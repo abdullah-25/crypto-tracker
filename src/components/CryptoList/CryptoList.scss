@@ -5,7 +5,7 @@
   box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.1);
   border-radius: 2px;
 }
-.warehouseform {
+.cryptoform {
   display: flex;
   flex-direction: column;
   row-gap: 1rem;
@@ -48,7 +48,7 @@
     padding: none;
   }
 }
-.warehouselist {
+.cryptolist {
   list-style-type: none;
   padding: 0;
   &__labels {
@@ -131,7 +131,7 @@
       padding-right: 2rem;
     }
 
-    &__warehouse {
+    &__crypto {
       @include tablet {
         width: 50%;
       }
@@ -178,4 +178,116 @@
       justify-content: flex-end;
     }
   }
+}
+
+.modal {
+  background-color: white;
+  bottom: 0px;
+  display: flex;
+  flex-direction: column;
+  @include tablet {
+    display: flex;
+    align-items: center;
+    margin-top: 6rem;
+    background-color: unset;
+  }
+  &-cancel {
+    border-radius: 20px;
+    border: 1px solid gray;
+    background-color: white;
+    color: #5c667e;
+    width: 43%;
+    @include tablet {
+      width: 25%;
+      margin-right: 2rem;
+    }
+  }
+  &-delete {
+    color: white;
+    background-color: #c94515;
+    border-radius: 20px;
+    width: 43%;
+    border: none;
+    @include tablet {
+      width: 25%;
+    }
+  }
+  &-save {
+    color: white;
+    background-color: #2e66e5;
+    border-radius: 20px;
+    width: 43%;
+    border: none;
+    @include tablet {
+      width: 25%;
+    }
+  }
+  &-button__div {
+    margin-bottom: 2rem;
+    width: 100%;
+    bottom: 0px;
+    height: 36px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    position: absolute;
+    @include tablet {
+      position: static;
+      width: 40%;
+      justify-content: end;
+      margin-right: 5rem;
+    }
+  }
+  &-div {
+    flex: 1;
+    @include tablet {
+      flex: none;
+      background-color: white;
+      width: 42rem;
+      height: 16.375rem;
+    }
+  }
+  &__title {
+    margin-left: 4rem;
+    margin-top: 3rem;
+    font-size: 1.75rem;
+    line-height: 2.25rem;
+    font-family: TitilliumWeb;
+    font-weight: 600;
+
+    @include tablet {
+      font-size: 2rem;
+      line-height: 2.5rem;
+      font-family: TitilliumWeb;
+      font-weight: 600;
+    }
+  }
+  &__text {
+    margin-left: 4rem;
+    margin-right: 2rem;
+    font-size: 0.9375rem;
+    line-height: 1.625rem;
+    font-family: TitilliumWeb;
+    font-weight: 400;
+
+    @include tablet {
+      font-size: 1rem;
+      line-height: 1.75rem;
+      font-family: TitilliumWeb;
+      font-weight: 400;
+      width: 34rem;
+    }
+  }
+
+  .MuiModal-backdrop {
+    background-color: white;
+    display: flex;
+    @include tablet {
+      background-color: rgb(0, 0, 0, 0.5);
+    }
+  }
+}
+.button-style {
+  display: flex;
+  justify-content: end;
 }

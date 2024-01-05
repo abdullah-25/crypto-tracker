@@ -1,8 +1,5 @@
 import "../CryptoListElement/CryptoListElement.scss";
-
-import { Link, useNavigate } from "react-router-dom";
-
-import chevron from "../../assets/icons/chevron_right-24px.svg";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export default function CryptoListElement({
   rank,
@@ -12,49 +9,65 @@ export default function CryptoListElement({
   coinPrice,
   priceChangeDaily,
   marketCap,
+
+  onCheckedChange,
+  isChecked,
+
+  onDeleteButtonClick,
 }) {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleCheckboxChange = (e) => {
+    onCheckedChange(e.target.checked, coin);
+  };
+
   return (
-    <li className="warehouselist__element">
+    <li className="cryptolist__element">
       <div className="table-cell">
         {" "}
-        <input type="checkbox" />
+        <input
+          type="checkbox"
+          checked={isChecked}
+          onChange={handleCheckboxChange}
+        />
       </div>
       <div className="table-cell">
-        <p className="body-small warehouselist__title">#</p>
+        <p className="body-small cryptolist__title">#</p>
 
-        <p className="body-small warehouselist__content">{rank}</p>
+        <p className="body-small cryptolist__content">{rank}</p>
       </div>
       <div className="table-cell">
-        <p className="body-small warehouselist__title">Coin</p>
+        <p className="body-small cryptolist__title">Coin</p>
 
-        <p className="body-small warehouselist__content">
-          <img className="icon warehouseform__icon" src={coinImage} alt="" />{" "}
+        <p className="body-small cryptolist__content">
+          <img className="icon cryptoform__icon" src={coinImage} alt="" />{" "}
           {coin} {coinSymbol.toUpperCase()}
         </p>
       </div>
 
       <div className="table-cell">
-        <p className="body-small warehouselist__title">Price</p>
-        <p className="body-small warehouselist__content">
+        <p className="body-small cryptolist__title">Price</p>
+        <p className="body-small cryptolist__content">
           $ {coinPrice.toLocaleString()}
         </p>
       </div>
 
       <div className="table-cell">
-        <p className="body-small warehouselist__title">24h</p>
-        <p className="body-small warehouselist__content">
+        <p className="body-small cryptolist__title">24h</p>
+        <p className="body-small cryptolist__content">
           {priceChangeDaily.toLocaleString()} %
         </p>
       </div>
       <div className="table-cell">
-        <p className="body-small warehouselist__title">Market Cap</p>
-        <p className="body-small warehouselist__content">
+        <p className="body-small cryptolist__title">Market Cap</p>
+        <p className="body-small cryptolist__content">
           $ {marketCap.toLocaleString()}
         </p>
       </div>
       <div className="table-cell">
-        <p className="body-small warehouselist__title">Remarks</p>
-        <p className="body-small warehouselist__content">
+        <p className="body-small cryptolist__title">Remarks</p>
+        <p className="body-small cryptolist__content">
           <input></input>
         </p>
       </div>
