@@ -40,8 +40,7 @@ export default function CryptoList({ CryptoCoinsArray }) {
         </ul>
         {CryptoCoinsArray.map((CryptoCoin) => (
           <CryptoListElement
-            key={CryptoCoin.id}
-            id={CryptoCoin.market_cap_rank}
+            key={CryptoCoin.market_cap_rank}
             coin={CryptoCoin.name}
             coinImage={CryptoCoin.image}
             coinSymbol={CryptoCoin.symbol}

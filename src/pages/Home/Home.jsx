@@ -5,19 +5,32 @@ import axios from "axios";
 
 export default function Home() {
   const [CryptoCoinsArray, setCryptoCoinsArray] = useState(undefined);
-  useEffect(() => {
-    axios
-      .get(
-        "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1"
-      )
-      .then((response) => {
-        console.log(response.data);
-        setCryptoCoinsArray(response.data);
-      })
-      .catch((response) => {
-        console.log(response);
+
+  async function getCoinsData() {
+    try {
+      const response = await fetch("http://127.0.0.1:5000/v1/crypto", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
       });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log(data);
+        setCryptoCoinsArray(data);
+      } else {
+        throw new Error("Request failed");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  }
+
+  useEffect(() => {
+    getCoinsData();
   }, []);
+
   if (!CryptoCoinsArray) {
     return <>Loading...</>;
   }
