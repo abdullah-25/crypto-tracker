@@ -1,9 +1,6 @@
-import { render, fireEvent, waitFor } from "@testing-library/react";
+import { render, fireEvent } from "@testing-library/react";
 
 import CryptoListElement from "../CryptoListElement/CryptoListElement";
-import CryptoList from "../CryptoList/CryptoList";
-
-import { MemoryRouter } from "react-router-dom";
 
 test("Renders CryptoListElement with correct coin name", () => {
   const coinData = {
