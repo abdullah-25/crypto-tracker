@@ -3,11 +3,17 @@ import CryptoListElement from "../CryptoListElement/CryptoListElement.jsx";
 import search_icon from "../../assets/icons/search-24px.svg";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import arrowBack from "../../assets/icons/arrow_back-24px.svg";
+import debounce from "lodash/debounce";
+
+import { useEffect } from "react";
 
 import { Modal } from "@mui/material";
 
 export default function CryptoList({ CryptoCoinsArray }) {
   const [selectedCoins, setSelectedCoins] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filteredCoins, setFilteredCoins] = useState([]);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -20,7 +26,15 @@ export default function CryptoList({ CryptoCoinsArray }) {
   const BACKEND_URL_ADD_DELETE_COINS =
     "http://127.0.0.1:5000/v1/users/1/liked_coins/delete";
 
+  useEffect(() => {
+    const filtered = CryptoCoinsArray.filter((coin) =>
+      coin.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setFilteredCoins(filtered);
+  }, [searchTerm, CryptoCoinsArray]);
+
   const handleCheckedChange = (isChecked, coinName) => {
+    // pull out constant
     if (isChecked && selectedCoins.length < 10) {
       setSelectedCoins((prevSelectedCoins) => [...prevSelectedCoins, coinName]);
     } else if (!isChecked) {
@@ -28,6 +42,15 @@ export default function CryptoList({ CryptoCoinsArray }) {
         prevSelectedCoins.filter((name) => name !== coinName)
       );
     }
+  };
+
+  const debouncedSearch = debounce((term) => {
+    setSearchTerm(term);
+  }, 300);
+
+  const handleSearchChange = (e) => {
+    const term = e.target.value;
+    debouncedSearch(term);
   };
 
   const handleSave = async () => {
@@ -83,14 +106,24 @@ export default function CryptoList({ CryptoCoinsArray }) {
   return (
     <div className="component-container">
       <form className="cryptoform">
+        {location.pathname === "/user-list" && (
+          <Link to="/">
+            <button className="icon-edit"></button>
+          </Link>
+        )}
         <h1 className="title">Crypto Coins</h1>
         <div className="cryptoform__search">
           <input
             className="cryptoform__input"
             type="text"
             placeholder="Search.."
+            onChange={handleSearchChange}
           />
-          <img className="icon cryptoform__icon" src={search_icon} alt="" />
+          <img
+            className="icon cryptoform__icon__search"
+            src={search_icon}
+            alt=""
+          />
         </div>
         <Link to="/user-list">
           <button className="cryptoform__addnew" type="button">
@@ -101,13 +134,15 @@ export default function CryptoList({ CryptoCoinsArray }) {
 
       <ul className="cryptolist">
         <ul className="cryptolist__labels">
-          <li className="list-label label-text">#</li>
-          <li className="list-label label-text">Coin</li>
+          <li className="list-label label-text">Select</li>
+          <li className="list-label label-text">Rank</li>
+          <li className="list-label label-text">Coin Name</li>
           <li className="list-label label-text">Price</li>
-          <li className="list-label label-text">24h</li>
+          <li className="list-label label-text">Last 24h</li>
           <li className="list-label label-text">Market Cap</li>
+          <li className="list-label label-text">Remarks</li>
         </ul>
-        {CryptoCoinsArray.map((CryptoCoin) => (
+        {filteredCoins.map((CryptoCoin) => (
           <CryptoListElement
             key={CryptoCoin.market_cap_rank}
             rank={CryptoCoin.market_cap_rank}
@@ -125,7 +160,7 @@ export default function CryptoList({ CryptoCoinsArray }) {
       {location.pathname === "/user-list" && (
         <div className="icon-container">
           <div className="table-cell">
-            <button className="savebtn" onClick={handleOpen}>
+            <button className="deletebtn" onClick={handleOpen}>
               Delete
             </button>
             <Modal open={open} onClose={handleClose} className="modal">
@@ -178,12 +213,6 @@ export default function CryptoList({ CryptoCoinsArray }) {
           </div>
         </div>
       )}
-
-      {/* <div className="container__btndiv">
-        <button className="savebtn" onClick={handleSave}>
-          Save
-        </button>
-      </div> */}
     </div>
   );
 }

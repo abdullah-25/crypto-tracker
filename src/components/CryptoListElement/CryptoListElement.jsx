@@ -1,5 +1,4 @@
 import "../CryptoListElement/CryptoListElement.scss";
-import { useLocation, useNavigate } from "react-router-dom";
 
 export default function CryptoListElement({
   rank,
@@ -12,12 +11,7 @@ export default function CryptoListElement({
 
   onCheckedChange,
   isChecked,
-
-  onDeleteButtonClick,
 }) {
-  const location = useLocation();
-  const navigate = useNavigate();
-
   const handleCheckboxChange = (e) => {
     onCheckedChange(e.target.checked, coin);
   };
@@ -26,11 +20,13 @@ export default function CryptoListElement({
     <li className="cryptolist__element">
       <div className="table-cell">
         {" "}
-        <input
-          type="checkbox"
-          checked={isChecked}
-          onChange={handleCheckboxChange}
-        />
+        <p className="body-small cryptolist__content">
+          <input
+            type="checkbox"
+            checked={isChecked}
+            onChange={handleCheckboxChange}
+          />
+        </p>
       </div>
       <div className="table-cell">
         <p className="body-small cryptolist__title">#</p>
@@ -39,7 +35,6 @@ export default function CryptoListElement({
       </div>
       <div className="table-cell">
         <p className="body-small cryptolist__title">Coin</p>
-
         <p className="body-small cryptolist__content">
           <img className="icon cryptoform__icon" src={coinImage} alt="" />{" "}
           {coin} {coinSymbol.toUpperCase()}
