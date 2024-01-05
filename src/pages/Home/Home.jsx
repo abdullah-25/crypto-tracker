@@ -1,7 +1,6 @@
 import "../PagePositioning.scss";
 import CryptoList from "../../components/CryptoList/CryptoList";
 import { useEffect, useState } from "react";
-import axios from "axios";
 
 export default function Home() {
   const [CryptoCoinsArray, setCryptoCoinsArray] = useState(undefined);
@@ -17,7 +16,6 @@ export default function Home() {
 
       if (response.ok) {
         const data = await response.json();
-        console.log(data);
         setCryptoCoinsArray(data);
       } else {
         throw new Error("Request failed");

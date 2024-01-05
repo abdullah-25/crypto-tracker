@@ -2,6 +2,7 @@ import "../CryptoList/CryptoList.scss";
 import CryptoListElement from "../CryptoListElement/CryptoListElement.jsx";
 import search_icon from "../../assets/icons/search-24px.svg";
 import { Link } from "react-router-dom";
+
 export default function CryptoList({ CryptoCoinsArray }) {
   return (
     <div className="component-container">
@@ -15,7 +16,13 @@ export default function CryptoList({ CryptoCoinsArray }) {
           />
           <img className="icon warehouseform__icon" src={search_icon} alt="" />
         </div>
+        <Link to="/user-list">
+          <button className="warehouseform__addnew" type="button">
+            <p className="button-text">Your Coins</p>
+          </button>
+        </Link>
       </form>
+
       <ul className="warehouselist">
         <ul className="warehouselist__labels">
           <li className="list-label label-text">
@@ -40,7 +47,7 @@ export default function CryptoList({ CryptoCoinsArray }) {
         </ul>
         {CryptoCoinsArray.map((CryptoCoin) => (
           <CryptoListElement
-            key={CryptoCoin.market_cap_rank}
+            rank={CryptoCoin.market_cap_rank}
             coin={CryptoCoin.name}
             coinImage={CryptoCoin.image}
             coinSymbol={CryptoCoin.symbol}
@@ -50,6 +57,9 @@ export default function CryptoList({ CryptoCoinsArray }) {
           />
         ))}
       </ul>
+      <div className="container__btndiv">
+        <button className="savebtn">Save</button>
+      </div>
     </div>
   );
 }

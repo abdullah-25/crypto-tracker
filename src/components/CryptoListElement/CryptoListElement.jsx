@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import chevron from "../../assets/icons/chevron_right-24px.svg";
 
 export default function CryptoListElement({
-  key,
+  rank,
   coin,
   coinImage,
   coinSymbol,
@@ -22,10 +22,7 @@ export default function CryptoListElement({
       <div className="table-cell">
         <p className="body-small warehouselist__title">#</p>
 
-        <p className="body-small warehouselist__link">
-          {key}
-          <img src={chevron} alt="" className="warehouselist__chevron" />
-        </p>
+        <p className="body-small warehouselist__content">{rank}</p>
       </div>
       <div className="table-cell">
         <p className="body-small warehouselist__title">Coin</p>
