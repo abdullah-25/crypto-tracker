@@ -13,11 +13,7 @@ This project is a Crypto Coins Dashboard that enables users to manage their favo
 
 ## Getting Started
 
-### Prerequisites
 
-- Node.js (version X.X.X)
-- npm (version X.X.X)
-- ...
 
 ### Installation
 
