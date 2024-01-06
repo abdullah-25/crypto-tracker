@@ -9,7 +9,7 @@ export default function Home() {
 
   async function getCoinsData() {
     try {
-      const response = await fetch("http://127.0.0.1:5000/v1/crypto", {
+      const response = await fetch(process.env.REACT_APP_CRYPTO_DATA_URL, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

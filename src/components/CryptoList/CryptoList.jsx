@@ -21,10 +21,10 @@ export default function CryptoList({ CryptoCoinsArray }) {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const BACKEND_URL_ADD_SAVE_COINS =
-    "http://127.0.0.1:5000/v1/users/1/add_liked_coins";
-  const BACKEND_URL_ADD_DELETE_COINS =
-    "http://127.0.0.1:5000/v1/users/1/liked_coins/delete";
+  // const BACKEND_URL_ADD_SAVE_COINS =
+  //   "http://127.0.0.1:5000/v1/users/1/add_liked_coins";
+  // const BACKEND_URL_ADD_DELETE_COINS =
+  //   "http://127.0.0.1:5000/v1/users/1/liked_coins/delete";
 
   useEffect(() => {
     const filtered = CryptoCoinsArray.filter((coin) =>
@@ -60,7 +60,7 @@ export default function CryptoList({ CryptoCoinsArray }) {
     setOpen(false);
 
     try {
-      const response = await fetch(BACKEND_URL_ADD_SAVE_COINS, {
+      const response = await fetch(process.env.REACT_APP_ADD_SAVE_COINS_URL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -83,7 +83,7 @@ export default function CryptoList({ CryptoCoinsArray }) {
     setOpen(false);
 
     try {
-      const response = await fetch(BACKEND_URL_ADD_DELETE_COINS, {
+      const response = await fetch(process.env.REACT_APP_ADD_DELETE_COINS_URL, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",

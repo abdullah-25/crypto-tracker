@@ -7,15 +7,12 @@ export default function UserCoinsTable() {
 
   async function UserCoinsTable() {
     try {
-      const response = await fetch(
-        "http://127.0.0.1:5000/v1/users/1/liked_coins",
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const response = await fetch(process.env.REACT_APP_USER_LIKED_COINS_URL, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
       if (response.ok) {
         const data = await response.json();
