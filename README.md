@@ -33,6 +33,9 @@ This project is a Crypto Coins Dashboard that enables users to manage their favo
    cd crypto-coins-dashboard
    npm install
    ```
+3.  **Start the backend server:**
+
+   Follow the instructions at crypto-backend (https://github.com/abdullah-25/crypto-backend)  to start the server.
 
 ### Usage
 
